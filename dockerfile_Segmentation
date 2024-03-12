@@ -1,0 +1,28 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    cmake \
+    curl \
+    nano \
+    python3-pip \
+    python3-dev \
+    python3-pydantic \
+    ruby-dev \
+    wget \
+    xorg-dev \
+    python3-opencv \
+    iputils-ping 
+
+RUN python3 -m pip install --upgrade pip \
+    numpy\
+    pandas\
+    matplotlib\
+    pillow\
+    thop
+
+RUN python3 -m pip install torch torchvision -f https://download.pytorch.org/whl/cu123.html
+
+
+COPY .ASV_Image_Segmentation /home/worspace
+
+WORKDIR /home/workspace
